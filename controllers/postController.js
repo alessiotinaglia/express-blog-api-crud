@@ -25,6 +25,17 @@ function index(req, res) {
     res.json(response);
 };
 
+function show(req, res) {
+    const postId = parseInt(req.params.id);
+    const post = posts.find(p => p.id === postId);
+    if (post) {
+        res.json(post);
+    } else {
+        res.status(404).json({ message: "Post non trovato" });
+    }
+};
+
+
 // Create - Store
 function store(req, res) {
     res.send("Creazione nuova post" + req.params.id);
@@ -56,4 +67,4 @@ function destroy(req, res) {
     }
 };
 
-module.exports = { index, store, update, modify, destroy };
+module.exports = { index, show, store, update, modify, destroy };
