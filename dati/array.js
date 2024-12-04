@@ -18,7 +18,7 @@ const posts = [
         titolo: "Ricetta pane fritto",
         contenuto: "Oggi parleremo della ricetta del pane fritto",
         immagine: ('<img scr="/images/pane_fritto_dolce.jpeg">'),
-        tags: ["Pane", "latte", "uova"]
+        tags: ["Pane", "latte", "Uova"]
     },
     {
         "id": 4,

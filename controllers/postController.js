@@ -1,5 +1,6 @@
 
 // tutte le funzioni del posts.js
+
 // importiamo i post
 const posts = require("../dati/array");
 
@@ -10,7 +11,7 @@ function index(req, res) {
     // copia del posts per lavorarci 
     let postsCopy = [...posts];
     if (itemTitolo) {
-        postsCopy = menu.filter((item) =>
+        postsCopy = posts.filter((item) =>
             item.titolo.toLowerCase().includes(itemTitolo.toLowerCase())
         );
     } if (tagsIngredient) {
@@ -25,6 +26,7 @@ function index(req, res) {
     res.json(response);
 };
 
+// funzione che trova per l'id
 function show(req, res) {
     const postId = parseInt(req.params.id);
     const post = posts.find(p => p.id === postId);
@@ -34,7 +36,6 @@ function show(req, res) {
         res.status(404).json({ message: "Post non trovato" });
     }
 };
-
 
 // Create - Store
 function store(req, res) {
@@ -53,18 +54,19 @@ function modify(req, res) {
 
 // Delete (cancellazione) - Destroy
 function destroy(req, res) {
-    res.send("Cancellazione del post :" + req.params.id);
     const id = parseInt(req.params.id);
-    const index = posts.findIndex(item => item.id === id)
+
+    // Trova l'indice del post con l'ID corrispondente
+    const index = posts.findIndex(item => item.id === id);
     if (index !== -1) {
+        const postToDelete = posts[index];
         posts.splice(index, 1);
-        res.sendStatus(204);
+        res.status(200).json({
+            message: "Post eliminato: " + postToDelete.id
+        });
     } else {
-        res.status(404).res.json({
-            error: '404',
-            message: "Post non trovato"
-        })
+        res.status(404).json({ message: "Post non trovato" });
     }
-};
+}
 
 module.exports = { index, show, store, update, modify, destroy };

@@ -6,6 +6,7 @@ const router = express.Router();
 // mi collego con il postController.js
 const { index, show, store, update, modify, destroy } = require('../controllers/postController');
 
+
 // fa una copia e filtra 
 router.get("/", index);
 
@@ -23,5 +24,6 @@ router.patch("/:id", modify);
 
 // Delete (cancellazione) - Destroy
 router.delete("/:id", destroy);
+
 
 module.exports = router;
