@@ -4,7 +4,7 @@ const posts = require("../dati/array");
 const router = express.Router();
 
 // mi collego con il postController.js
-const  { index, update, modify, destroy } = require('../controllers/postController');
+const  { index, store, update, modify, destroy } = require('../controllers/postController');
 
 // fa una copia e filtra 
 router.get("/", index);

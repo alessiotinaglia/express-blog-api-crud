@@ -56,4 +56,4 @@ function destroy(req, res) {
     }
 };
 
-module.exports = { index, update, modify, destroy };
+module.exports = { index, store, update, modify, destroy };
