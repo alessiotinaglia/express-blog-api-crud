@@ -3,6 +3,7 @@
 
 // importiamo i post
 const posts = require("../dati/array");
+const { post } = require("../router/posts");
 
 // fa una copia e filtra 
 function index(req, res) {
@@ -37,7 +38,7 @@ function show(req, res) {
     }
 };
 
-// Create - Store
+// Create - Store - crea uno nuovo
 function store(req, res) {
     let newId = 0;
     for (let i = 0; i < posts.length; i++) {
@@ -57,17 +58,29 @@ function store(req, res) {
     res.status(201).json(newPost)
 };
 
-// Update totale - Update
+// Update totale - Update - Modifica 
 function update(req, res) {
-    res.send("Modifica integrale del post" + req.params.id);
-}
+    const id = parseInt(req.params.id);
+    const item = posts.find((item) => item.id === id);
+    if(!item){
+        res.status(404).json({ success:false, message: "Post non trovato" });
+        return;
+    }
+    console.log(req.body);
+    item.titolo = req.body.titolo,
+    item.contenuto = req.body.contenuto,
+    item.immagine = req.body.immagine,
+    item.tags = req.body.tags 
+    console.log(post);    
+    res.json(item);
+} 
 
-// Update parziale - Modify
+// Update parziale - Modify - modifica solo parziale
 function modify(req, res) {
     res.send("Modifica parziale del post" + req.params.id);
 };
 
-// Delete (cancellazione) - Destroy
+// Delete (cancellazione) - Destroy - elimina
 function destroy(req, res) {
     const id = parseInt(req.params.id);
 

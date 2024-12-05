@@ -18,7 +18,7 @@ app.use(express.static("public"));
 const postsRouter = require("./router/posts.js");
 
 // Rotte api
-app.use("/", postsRouter);
+app.use("/posts", postsRouter);
 
 //rotta fallback
 app.all("*", (req, res) => {
