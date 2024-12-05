@@ -8,10 +8,10 @@ const { index, show, store, update, modify, destroy } = require('../controllers/
 
 
 // fa una copia e filtra 
-router.get("/posts", index);
+router.get("/", index);
 
 // fa una copia e filtra 
-router.get("/posts/:id", show);
+router.get("/:id", show);
 
 // Create - Store
 router.post("/", store);

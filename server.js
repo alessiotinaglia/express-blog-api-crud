@@ -3,14 +3,19 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-// Middleware per gestire il body JSON
-app.use(express.json());
 
-// Importa il router da posts.js
-const postsRouter = require("./router/posts.js");
+// Middleware 
+
+// per gestire il body JSON
+app.use(express.json());
 
 // immagini statiche
 app.use(express.static("public"));
+
+
+
+// Importa il router da posts.js
+const postsRouter = require("./router/posts.js");
 
 // Rotte api
 app.use("/", postsRouter);
@@ -22,5 +27,5 @@ app.all("*", (req, res) => {
 
 // In ascolto sulla porta 3000
 app.listen(PORT, () => {
-    console.log(`Server in esecuzione su http://localhost:${PORT}`);
+  console.log(`Server in esecuzione su http://localhost:${PORT}`);
 });

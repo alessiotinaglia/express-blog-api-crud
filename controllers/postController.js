@@ -39,7 +39,22 @@ function show(req, res) {
 
 // Create - Store
 function store(req, res) {
-    res.send("Creazione nuova post" + req.params.id);
+    let newId = 0;
+    for (let i = 0; i < posts.length; i++) {
+        if (posts[i].id > newId) {
+            newId = posts[i].id;
+        }
+    }
+    newId += 1;
+    const newPost = {
+        id: newId,
+        titolo: req.body.titolo,
+        contenuto: req.body.contenuto,
+        immagine: req.body.immagine,
+        tags: req.body.tags
+    }
+    posts.push(newPost)
+    res.status(201).json(newPost)
 };
 
 // Update totale - Update
