@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-
 // Middleware 
 
 // per gestire il body JSON
@@ -11,7 +10,6 @@ app.use(express.json());
 
 // immagini statiche
 app.use(express.static("public"));
-
 
 
 // Importa il router da posts.js

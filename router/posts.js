@@ -1,4 +1,3 @@
-
 const express = require("express");
 const posts = require("../dati/array");
 const router = express.Router();

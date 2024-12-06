@@ -27,7 +27,7 @@ function index(req, res) {
     res.json(response);
 };
 
-// funzione che trova per l'id
+// funzione che trova per l'id - una sola
 function show(req, res) {
     const postId = parseInt(req.params.id);
     const post = posts.find(p => p.id === postId);
