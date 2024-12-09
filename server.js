@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-// Middleware 
+// Middleware
 
 // per gestire il body JSON
 app.use(express.json());
@@ -14,6 +14,9 @@ app.use(express.static("public"));
 
 // Importa il router da posts.js
 const postsRouter = require("./router/posts.js");
+
+// Importa da middlewares
+const checkTime = require("./middlewares/checkTime.js");
 
 // Rotte api
 app.use("/posts", postsRouter);

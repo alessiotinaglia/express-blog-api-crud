@@ -1,16 +1,19 @@
 const express = require("express");
 const posts = require("../dati/array");
 const router = express.Router();
+const checkTime = require("../middlewares/checkTime")
 
 // mi collego con il postController.js
 const { index, show, store, update, modify, destroy } = require('../controllers/postController');
 
+// per i middlewares
+router.use(checkTime);
 
 // fa una copia e filtra 
 router.get("/", index);
 
 // fa una copia e filtra 
-router.get("/:id", show);
+router.get("/:id", checkTime, show);
 
 // Create - Store
 router.post("/", store);
