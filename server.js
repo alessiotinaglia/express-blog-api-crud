@@ -17,22 +17,19 @@ const postsRouter = require("./router/posts.js");
 
 // Importa da middlewares
 const checkTime = require("./middlewares/checkTime.js");
-
 // Importa da middlewares
 const errorsHandler = require("./middlewares/errorsHandler.js");
+// Importa da middlewares
+const notFound = require("./middlewares/notFound.js");
 
 // Rotte api
 app.use("/posts", postsRouter);
 
-//rotta fallback
-// app.all("*", (req, res) => {
-//   res.status(404).json({ error: "404", message: "Not Found !" });
-// });
-
-
-
 // gestione degli errori (deve essere sempre la penultima)
 app.use(errorsHandler);
+
+//rotta fallback
+app.use(notFound);
 
 // In ascolto sulla porta 3000
 app.listen(PORT, () => {
