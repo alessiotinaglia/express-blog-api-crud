@@ -6,9 +6,6 @@ const checkTime = require("../middlewares/checkTime")
 // mi collego con il postController.js
 const { index, show, store, update, modify, destroy } = require('../controllers/postController');
 
-// per i middlewares
-router.use(checkTime);
-
 // fa una copia e filtra 
 router.get("/", index);
 

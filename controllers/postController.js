@@ -62,18 +62,18 @@ function store(req, res) {
 function update(req, res) {
     const id = parseInt(req.params.id);
     const item = posts.find((item) => item.id === id);
-    if(!item){
-        res.status(404).json({ success:false, message: "Post non trovato" });
+    if (!item) {
+        res.status(404).json({ success: false, message: "Post non trovato" });
         return;
     }
     console.log(req.body);
     item.titolo = req.body.titolo,
-    item.contenuto = req.body.contenuto,
-    item.immagine = req.body.immagine,
-    item.tags = req.body.tags 
-    console.log(post);    
+        item.contenuto = req.body.contenuto,
+        item.immagine = req.body.immagine,
+        item.tags = req.body.tags
+    console.log(post);
     res.json(item);
-} 
+}
 
 // Update parziale - Modify - modifica solo parziale
 function modify(req, res) {

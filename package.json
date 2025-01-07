@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "cours": "^1.0.0",
     "expres": "^0.0.5",
     "express": "^4.21.1"
   }
